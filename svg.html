@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>svg动画</title>
+</head>
+<style>
+	.text{
+		fill:none;
+		stroke-width:5;
+		stroke-dasharray:0 160;
+		stroke-dashoffset:0;
+	}
+	@keyframes stroke {
+  100% {
+    stroke-dashoffset: 1000;
+    stroke-dasharray: 80 160;
+  }
+}
+
+@keyframes stroke1 {
+  100% {
+    stroke-dashoffset: 1080;
+    stroke-dasharray: 80 160;
+  }
+}
+
+
+@keyframes stroke2 {
+  100% {
+    stroke-dashoffset: 1160;
+    stroke-dasharray: 80 160;
+  }
+}
+	.text:nth-child(3n+1){
+		stroke:#F60A0A;
+		animation: stroke 6s ease-in-out forwards;
+	}
+	.text:nth-child(3n+2){
+		stroke:#F2FF14;
+		animation: stroke1 6s ease-in-out forwards;
+	}
+	.text:nth-child(3n+3){
+		stroke:#fb9505;
+		animation: stroke2 6s ease-in-out forwards;
+	}
+	
+	*{
+		margin:0px;
+		padding:0px;
+ 	}
+	html body{
+		width:100%;
+		height:100%;
+	}
+	
+	body{
+		background:#615A5A;
+		font:300px impact;
+	}
+	svg{
+		position:absolute;
+		width:100%;
+		height:100%;
+	}
+	
+</style>
+<body>
+	
+	<svg>
+		<symbol id="s-text">
+			<text x="50%" y="70%"   text-anchor="middle">
+				LOGO
+			</text>
+		</symbol>
+		<use xlink:href="#s-text" class="text"/>
+		<use xlink:href="#s-text" class="text"/>
+		<use xlink:href="#s-text" class="text"/>
+		
+	</svg>
+
+</body>
+</html>
