@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>banner</title>
+</head>
+<style>
+	*{
+	margin:0px;
+	padding:0px;
+	}
+	#banner{
+	width:500px;
+	height:360px;
+	border:1px solid red;
+	margin:50px auto;
+	}
+	a{
+	text-decoration:none;
+	width:50px;
+	height:30px;
+	background-color:gray;
+	line-height:30px;
+	text-align:center;
+	position:absolute;
+	top:50%;
+	margin-top:-15px;
+	}
+	#left{
+	left:10px;}
+	#right{
+	right:10px;}
+	#ima{
+	width:500px;height:360px;
+	}
+	#list{
+	position:absolute;left:50%;margin-left:-45px;bottom:20px;}
+	#list li{
+	width:12px;height:12px;list-style:none;float:left;margin-left:4px;background-color:green;border-radius:50%;
+	}
+</style>
+<body>
+<div id="banner">
+<div  style="position:absolute">
+	<img id="ima" src="img/1.jpg"/>
+	<a id="left" href="javascript:void(0);">&lt;</a>
+	<a id="right" href="javascript:void(0);">&gt;</a>
+	<ul id="list">
+		<li style="background-color:red"></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+</div>
+<script>
+	window.onload=function(){
+		var oleft=document.getElementById("left");
+		var oright=document.getElementById("right");
+		var oima=document.getElementById("ima");
+		var olist=document.getElementById("list");
+		var oli=document.getElementsByTagName("li");
+		var num=1;
+		oright.onclick=function(){
+			num++;
+			if(num>5){
+				num=1;
+			}
+			oima.src="img/"+num+".jpg";
+			Ccolor(num);
+		};
+		oleft.onclick=function(){
+			num--;
+			if(num<1){
+				num=5;
+			}
+			oima.src="img/"+num+".jpg";
+			Ccolor(num);
+		};
+		for(var i=0;i<oli.length;i++){
+			oli[i].index=i+1;
+			oli[i].onclick=function(){
+				num=this.index;
+				oima.src="img/"+num+".jpg";
+				
+				Ccolor(num);
+			}
+		}
+		function Ccolor(s){
+			for(var j=0;j<oli.length;j++){
+					if(j==(s-1)){
+						oli[j].style.backgroundColor="red";
+					}
+					else{
+						oli[j].style.backgroundColor="green";
+					}
+				}
+		};
+		function Tcode(){
+			num++;
+			if(num>5){
+				num=1;
+			}
+			oima.src="img/"+num+".jpg";
+			Ccolor(num);
+			setTimeout(Tcode,3000);
+		};
+		Tcode();
+	};
+</script>
+
+</body>
+</html>
