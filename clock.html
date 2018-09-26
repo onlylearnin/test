@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+<title>test</title>
+</head>
+<style>
+body{
+	background-color:#000000;
+}
+*{
+	margin:0px;
+	padding:0px;
+}
+#box{
+	width:600px;
+	height:600px;
+	margin:100px auto;
+}
+</style>
+<body>
+	<div id="box">
+		<canvas id="canvas" width="600px" height="600px"></canvas>
+	</div>
+	<script>
+		var ocanvas=document.getElementById("canvas");
+		var ctx=ocanvas.getContext("2d");
+		var pi=Math.PI;
+		function dial(){
+			//let pi=Math.PI;
+			ctx.save();
+			ctx.beginPath();
+			ctx.translate(300,300);
+			ctx.arc(0,0,200,0,2*pi);
+			ctx.stroke();
+			ctx.closePath();
+			for(let i=0;i<60;i++){
+				ctx.save();
+				ctx.rotate(-pi/2+i*pi/30);
+				ctx.beginPath();
+				//ctx.translate(200,0);
+				ctx.lineWidth=i%5 ? 2:4;
+				ctx.strokeStyle=i%5 ? "blue":"red";
+				ctx.moveTo(200,0);
+				ctx.lineTo(160,0);
+				ctx.stroke();
+				ctx.closePath();
+				ctx.restore();
+			}
+			ctx.restore();
+		}
+		//dial();
+		function hands(){
+			let time=new Date();
+			let h=time.getHours();
+			let m=time.getMinutes();
+			let s=time.getSeconds();
+			//ctx.cleanRect(0,0,600,600);
+			ctx.save();
+			ctx.translate(300,300);
+			ctx.save();
+			//ctx.translate(300,300);
+			ctx.beginPath();
+			ctx.lineWidth=5;
+			ctx.strokeStyle="green";
+			ctx.rotate(-pi/2+pi/12*h);
+			ctx.moveTo(0,0);
+			ctx.lineTo(60,0);
+			ctx.stroke();
+			ctx.closePath();
+			ctx.restore();
+			
+			ctx.save();
+			//ctx.translate(300,300);
+			ctx.beginPath();
+			ctx.lineWidth=5;
+			ctx.strokeStyle="pink";
+			ctx.rotate(-pi/2+pi/30*m);
+			ctx.moveTo(0,0);
+			ctx.lineTo(120,0);
+			ctx.stroke();
+			ctx.closePath();
+			ctx.restore();
+			
+			ctx.save();
+			//ctx.translate(300,300);
+			ctx.beginPath();
+			ctx.lineWidth=5;
+			ctx.strokeStyle="white";
+			ctx.rotate(-pi/2+pi/30*s);
+			ctx.moveTo(0,0);
+			ctx.lineTo(180,0);
+			ctx.stroke();
+			ctx.closePath();
+			ctx.restore();
+			
+			ctx.restore();
+		}
+		function start(){
+			ctx.clearRect(0,0,600,600);
+			dial();
+			hands();
+		}
+		//requestAnimationFrame(start);
+		setInterval(start,1000);
+		
+	</script>
+</body>
+</html>
