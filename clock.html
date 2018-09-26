@@ -62,7 +62,8 @@ body{
 			ctx.beginPath();
 			ctx.lineWidth=5;
 			ctx.strokeStyle="green";
-			ctx.rotate(-pi/2+pi/12*h);
+			ctx.lineCap="round";
+			ctx.rotate(-pi/2+pi/6*h);
 			ctx.moveTo(0,0);
 			ctx.lineTo(60,0);
 			ctx.stroke();
@@ -70,6 +71,7 @@ body{
 			ctx.restore();
 			
 			ctx.save();
+			ctx.lineCap="round";
 			//ctx.translate(300,300);
 			ctx.beginPath();
 			ctx.lineWidth=5;
@@ -82,6 +84,7 @@ body{
 			ctx.restore();
 			
 			ctx.save();
+			ctx.lineCap="round";
 			//ctx.translate(300,300);
 			ctx.beginPath();
 			ctx.lineWidth=5;
